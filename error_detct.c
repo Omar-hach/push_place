@@ -18,10 +18,10 @@ int	off_limit(char *number, int j)
 
 	i = 0;
 	sign = *number;
-	if (!(!j && *number != ' ') && !(j && (number[-1] == ' ' && *number != ' ')))
+	if (!(!j && *number != ' ')
+		&& !(j && (number[-1] == ' ' && *number != ' ')))
 		return (0);
-	if (*number == '-' || *number == '+')
-		number++;
+	number += (*number == '-' || *number == '+');
 	j = 0;
 	while (number[j] == '0')
 		j++;
