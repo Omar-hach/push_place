@@ -15,7 +15,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_b;
 	t_stack	*stack_a;
-	
+
 	stack_b = NULL;
 	stack_a = NULL;
 	if (argc < 2)
@@ -26,7 +26,8 @@ int	main(int argc, char **argv)
 	if (stack_a->max > 0)
 	{
 		char_to_intlist(argc - 1, argv, stack_a);
-		ft_duplicate(stack_a->list, ft_number_count(argc - 1, argv + 1));
+		ft_duplicate(stack_a->list, ft_number_count(argc - 1, argv + 1),
+			stack_a, stack_b);
 	}
 	stack_sorting(stack_a, stack_b);
 	free_stack(stack_a);

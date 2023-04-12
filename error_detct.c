@@ -11,23 +11,30 @@
 /* ************************************************************************** */
 #include"push_swap.h"
 
-int	off_limit(char *number)
+int	off_limit(char *number, int j)
 {
-	int	i;
+	int		i;
+	char	sign;
 
 	i = 0;
-	if (*number == '-' && ft_strncmp(number, "-2147483648", 11))
+	sign = *number;
+	if (!(!j && *number != ' ') && !(j && (number[-1] == ' ' && *number != ' ')))
+		return (0);
+	if (*number == '-' || *number == '+')
 		number++;
-	while (number[i] && number[i] != ' ')
+	j = 0;
+	while (number[j] == '0')
+		j++;
+	while (number[i + j] && number[i + j] != ' ')
 		i++;
-	if (i < 10 || !ft_strncmp(number, "-2147483648", 11))
+	if (i < 10 || (!ft_strncmp(number + j, "2147483648", 10) && sign == '-'))
 		return (0);
 	else if (i == 10)
 	{
 		i = 0;
-		while (number[i] == "2147483648"[i] && i < 11)
+		while (number[i + j] == "2147483648"[i] && i < 11)
 			i++;
-		if (number[i] < "2147483648"[i])
+		if (number[i + j] < "2147483648"[i])
 			return (0);
 	}
 	return (1);
@@ -36,23 +43,24 @@ int	off_limit(char *number)
 int	int_chek(char *word)
 {
 	int	digit;
+	int	i;
 
 	digit = 0;
+	i = -1;
 	if (!*word)
 		return (1);
-	while (*word)
+	while (word[++i])
 	{
-		if (ft_strlen(word) > 9 && off_limit(word))
+		if (ft_strlen(word + i) > 8 && off_limit(word + i, i))
 			return (1);
-		if ((*word == '-' || *word == '+'))
-			word++;
-		if ((*word < '0' || *word > '9') && *word != ' ')
+		if ((word[i] == '-' || word[i] == '+'))
+			i++;
+		if ((word[i] < '0' || word[i] > '9') && word[i] != ' ')
 			return (1);
-		if (*word != ' ' && (*(word + 1) == '+' || *(word + 1) == '-'))
+		if (word[i] != ' ' && (word[i + 1] == '+' || word[i + 1] == '-'))
 			return (1);
-		if (*word != ' ')
+		if (word[i] != ' ')
 			digit++;
-		word++;
 	}
 	return (!digit);
 }
@@ -71,3 +79,4 @@ void	error_detct(int argc, char **argv)
 		}
 	}
 }
+// if zero is the first arg error

@@ -77,7 +77,8 @@ int	main(int argc, char **argv)
 	if (stack_a->max > 0)
 	{
 		char_to_intlist(argc - 1, argv, stack_a);
-		ft_duplicate(stack_a->list, ft_number_count(argc - 1, argv + 1));
+		ft_duplicate(stack_a->list, ft_number_count(argc - 1, argv + 1),
+			stack_a, stack_b);
 	}
 	read_instraction(stack_a, stack_b);
 	free_stack(stack_a);

@@ -13,7 +13,7 @@
 
 t_stack	*create_stack(t_stack *stack, int max)
 {
-	stack = (t_stack *)malloc(sizeof(t_stack));
+	stack = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	if (!stack)
 		exit(1);
 	stack->top = -1;

@@ -9,7 +9,6 @@
 /*   Updated: 2023/02/20 14:35:41 by ohachami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include"push_swap.h"
 
 void	suite_b_t_a(t_stack *stack_b, t_stack *stack_a, int min_i, int min_j)

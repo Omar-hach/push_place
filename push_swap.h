@@ -13,7 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "libft/libft.h"
-# include "print/ft_printf.h"
+# include "libft/print/ft_printf.h"
 
 typedef struct s_stack
 {
@@ -34,7 +34,7 @@ int		push(t_stack *stack, int element);
 t_stack	*insert(t_stack *stack, char **list, int len);
 t_stack	*create_stack(t_stack *stack, int max);
 int		ft_number_count(int argc, char **argv);
-void	ft_duplicate(int *list, int max);
+void	ft_duplicate(int *list, int max, t_stack *stack_a, t_stack *stack_b);
 void	char_to_intlist(int argc, char **argv, t_stack *stack);
 void	free_stack(t_stack *stack);
 void	push_to(t_stack *stack_1, t_stack *stack_2);

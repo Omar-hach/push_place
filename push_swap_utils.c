@@ -46,7 +46,7 @@ int	ft_number_count(int argc, char **argv)
 	return (count);
 }
 
-void	ft_duplicate(int *list, int max)
+void	ft_duplicate(int *list, int max, t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
 	int	j;
@@ -63,6 +63,8 @@ void	ft_duplicate(int *list, int max)
 			if (number == list[i])
 			{
 				write(2, "Error\n", 6);
+				free_stack(stack_a);
+				free_stack(stack_b);
 				exit(1);
 			}
 			i++;

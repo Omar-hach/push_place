@@ -43,7 +43,7 @@ char	*ft_strjoin2(char *s1, char *s2)
 	}
 	i = -1;
 	j = -1;
-	uni = (char *)ft_calloc2(ft_strlen(s1) + ft_strlen(s2) + 1, 1);
+	uni = (char *)ft_calloc2(ft_strlen2(s1) + ft_strlen2(s2) + 1, 1);
 	if (!uni)
 	{
 		free(s1);
@@ -57,7 +57,7 @@ char	*ft_strjoin2(char *s1, char *s2)
 	return (uni);
 }
 
-int	ft_strlen(const char *str)
+int	ft_strlen2(const char *str)
 {
 	size_t	i;
 
