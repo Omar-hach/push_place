@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include"push_swap.h"
 
-void	instraction_error(char *instract)
+void	instraction_error(char *instract, t_stack *stack_a, t_stack *stack_b)
 {
 	if (ft_strncmp(instract, "sa", 2) && ft_strncmp(instract, "sb", 2)
 		&& ft_strncmp(instract, "pb", 2) && ft_strncmp(instract, "pa", 2)
@@ -21,13 +21,16 @@ void	instraction_error(char *instract)
 		&& ft_strncmp(instract, "ss", 2))
 	{
 		write(2, "Error\n", 6);
+		free(instract);
+		free_stack(stack_a);
+		free_stack(stack_b);
 		exit(1);
 	}
 }
 
 void	instraction_detect(char *instract, t_stack *stack_a, t_stack *stack_b)
 {
-	instraction_error(instract);
+	instraction_error(instract, stack_a, stack_b);
 	if (!ft_strncmp(instract, "sa\n", 3) || !ft_strncmp(instract, "ss\n", 3))
 		swap(stack_a, stack_b);
 	if (!ft_strncmp(instract, "sb\n", 3) || !ft_strncmp(instract, "ss\n", 3))
@@ -54,6 +57,7 @@ void	read_instraction(t_stack *stack_a, t_stack *stack_b)
 	while (instract)
 	{
 		instraction_detect(instract, stack_a, stack_b);
+		free(instract);
 		instract = get_next_line(0);
 	}
 	if (stack_b->top == -1 && stack_is_sorted(stack_a))
